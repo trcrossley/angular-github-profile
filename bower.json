@@ -1,0 +1,23 @@
+{
+  "name": "bower install jquery --save",
+  "homepage": "https://github.com/trcrossley/angular-github-profile",
+  "authors": [
+    "Tristan Crossley <trcrossley@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "angular": "~1.4.9",
+    "angular-resource": "~1.4.9"
+  }
+}
