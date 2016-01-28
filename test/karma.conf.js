@@ -1,3 +1,5 @@
+// karma start test/karma.conf.js
+
 // Karma configuration
 // Generated on Thu Nov 27 2014 10:43:21 GMT+0000 (GMT)
 

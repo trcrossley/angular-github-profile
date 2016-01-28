@@ -14,6 +14,21 @@ describe('GitUserSearchController', function() {
 
   describe('when searching for a user', function() {
 
+    var httpBackend;
+    beforeEach(inject(function($httpBackend) {
+      httpBackend = $httpBackend;
+      httpBackend
+        .expectGET("https://api.github.com/search/users?&access_token=22e7d8c3e8eadb17a9fbdfc5a5a0bc33d85e127a&q=hello")
+        .respond(
+          { items: items }
+        );
+    }));
+
+    afterEach(function() {
+      httpBackend.verifyNoOutstandingExpectation();
+      httpBackend.verifyNoOutstandingRequest();
+    });
+
     var items = [
       {
         "login": "tansaku",
@@ -27,7 +42,10 @@ describe('GitUserSearchController', function() {
       }
     ];
 
-    it('displays seach results', function() {
+    it('displays search results', function() {
+      ctrl.searchTerm = 'hello';
+      ctrl.doSearch();
+      httpBackend.flush();
       expect(ctrl.searchResult.items).toEqual(items);
     });
 
