@@ -18,16 +18,11 @@ describe('GitUserSearchController', function() {
     beforeEach(inject(function($httpBackend) {
       httpBackend = $httpBackend;
       httpBackend
-        .expectGET("https://api.github.com/search/users?&access_token=22e7d8c3e8eadb17a9fbdfc5a5a0bc33d85e127a&q=hello")
+        .expectGET("https://api.github.com/search/users")
         .respond(
           { items: items }
         );
     }));
-
-    afterEach(function() {
-      httpBackend.verifyNoOutstandingExpectation();
-      httpBackend.verifyNoOutstandingRequest();
-    });
 
     var items = [
       {
@@ -41,6 +36,11 @@ describe('GitUserSearchController', function() {
         "html_url": "https://github.com/stephenlloyd"
       }
     ];
+
+    afterEach(function() {
+      httpBackend.verifyNoOutstandingExpectation();
+      httpBackend.verifyNoOutstandingRequest();
+    });
 
     it('displays search results', function() {
       ctrl.searchTerm = 'hello';
